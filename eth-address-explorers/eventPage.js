@@ -31,8 +31,12 @@ const explorersInfo = {
     baseUrl: "https://pro.nansen.ai/wallet-profiler?address=",
     active: true,
   },
-  OpenSea: {
+  OpenSeaAccount: {
     baseUrl: "https://opensea.io/",
+    active: true,
+  },
+  OpenSeaCollection: {
+    baseUrl: "https://opensea.io/collection/",
     active: true,
   },
   PolygonScan: {
@@ -107,6 +111,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
 chrome.contextMenus.onClicked.addListener((clickData) => {
   // pick out address from the selected text
+  console.log(clickData)
   if (clickData.selectionText) {
     var newURL =
       explorersInfo[clickData.menuItemId].baseUrl + clickData.selectionText;
